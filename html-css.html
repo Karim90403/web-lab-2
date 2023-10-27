@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+  <style type="text/css">
+    .mystyle {color: green; font-family: "Verdana"}
+    .defstyle {color: black; font-family: "Georgia"}
+
+    .table-style1 {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      border: 2px solid black;
+    }
+    .table-style2 {
+      background-color: white;
+      color: blueviolet;
+      font-family: Verdana, sans-serif;
+      border: 2px solid black;
+    }
+    .table-style1-alt {
+      background-color: black;
+      color: white;
+    }
+    .table-style2-alt {
+      background-color: gray;
+      color: #f5f5f5;
+    }
+  </style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>История javascript</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+
+</head>
+<body>
+&nbsp;
+<div class="text">
+
+    <main>
+      <h1>История JavaScript</h1>
+
+        <p p class="defstyle" onMouseOver="this.className='mystyle'" onMouseOut="this.className='defstyle'">JavaScript — мультипарадигменный язык программирования. Поддерживает объектно-ориентированный, императивный и функциональный стили. Является реализацией спецификации ECMAScript (стандарт ECMA-262).
+          JavaScript обычно используется как встраиваемый язык для программного доступа к объектам приложений. Наиболее широкое применение находит в браузерах как язык сценариев для придания интерактивности веб-страницам.
+          Основные архитектурные черты: динамическая типизация, слабая типизация, автоматическое управление памятью, прототипное программирование, функции как объекты первого класса.
+          На JavaScript оказали влияние многие языки, при разработке была цель сделать язык похожим на Java. Языком JavaScript не владеет какая-либо компания или организация, что отличает его от ряда языков программирования, используемых в веб-разработке.
+          Название «JavaScript» является зарегистрированным товарным знаком корпорации Oracle в США.</p>
+
+        <p id="secondParagraph" onmouseover="changeStyle(this)" onmouseout="restoreStyle(this)">JavaScript никак не связан с java, хотя и назван в честь него</p>
+
+      </details>&nbsp;<h2>Хронология становления веба</h2>
+      <p class="news"><span class="date">25.12.1990 - </span>Первый в мире браузер</p>
+      <p class="news"><span class="date">06.08.1991 - </span>Первый в мире сайт</p>
+      <p class="news"><span class="date">01.10.1994 - </span>World Wide Web Consortium (W3C)</p>
+      <p class="news"><span class="date">17.10.1994 - </span>Perl 5</p>
+      <p class="news"><span class="date">Начало 1995 года - </span>Apache HTTP Server</p>
+      <p class="news"><span class="date">23.05.1995 - </span>MySQL</p>
+      <p class="news"><span class="date">08.06.1995 - </span>Personal Home Page (PHP 1.0)</p>
+      <p class="news"><span class="date">17.12.1996 - </span>Cascading Style Sheets (CSS1)</p>
+    </main>
+
+  <div class="buttons">
+      <button id="windowBtn" onclick="">Window</button>
+      <button id="navigatorBtn">Navigator</button>
+      <button id="locationBtn">Location</button>
+      <button id="screenBtn">Screen</button>
+  </div>
+
+    <script type="text/javascript">
+
+        function changeStyle(elementId) { 
+          var element = document.getElementById(elementId); 
+          if (element) { 
+            element.style.color = "green"; 
+            element.style.fontFamily = "Arial, sans-serif"; 
+          } 
+        } 
+       
+        function restoreStyle(elementId) { 
+          var element = document.getElementById(elementId); 
+          if (element) { 
+            element.style.paddingRight = "3cm";
+            element.style.textIndent = "2.5cm";
+          } 
+        } 
+
+        const secondParagraph = document.querySelectorAll("p")[1];
+          function changeParagraphStyle() {
+            secondParagraph.style.paddingRight = "3cm";
+            secondParagraph.style.textIndent = "2.5cm";
+            secondParagraph.style.color = "";
+          }
+          function resetParagraphStyle() {
+            secondParagraph.style.paddingRight = "";
+            secondParagraph.style.textIndent = "";
+          }
+          secondParagraph.addEventListener("mouseover", changeParagraphStyle);
+          secondParagraph.addEventListener("mouseout", resetParagraphStyle);
+
+
+      document.querySelector("#windowBtn").onclick = function()
+      {
+        var newWindow = window.open("", "NewWindow", "width=400,height=300"); 
+      newWindow.document.write("<h1>Новое окно</h1>"); 
+      newWindow.document.write("<p>Привет, это новое окно браузера!</p>"); 
+      setTimeout(function() { 
+        newWindow.close(); 
+      }, 5000);
+      }
+
+      document.querySelector("#navigatorBtn").onclick = function()
+      {
+          var browserInfo = "Browser Type: " + navigator.appCodeName + "\n" +
+                    "Browser Name: " + navigator.appName + "\n" +
+                    "Browser Version: " + navigator.appVersion;
+          alert(browserInfo);
+      }
+
+
+      document.querySelector("#locationBtn").onclick = function()
+      {
+          var userInfo = "Username: " + window.prompt("Please enter your name:") + "\n";
+          var locationInfo = "URL: " + location.href;
+          alert(userInfo + locationInfo);
+      }
+
+      document.querySelector("#screenBtn").onclick = function()
+      {
+          var screenInfo = "Screen Width: " + screen.width + "\n" +
+                           "Screen Height: " + screen.height + "\n" +
+                           "Screen Color Depth: " + screen.colorDepth;
+          var confirmation = confirm(screenInfo + "\n\nDo you want to see this information in the browser window?");
+          if (confirmation) {
+            alert(screenInfo);
+          }
+      }
+
+
+    </script>
+
+    <table>
+        <tr>
+          <th class="table-style1">Ячейка 1</th>
+          <th class="table-style2">Ячейка 2</th>
+        </tr>
+        <tr>
+          <td class="table-style1">Ячейка 3</td>
+          <td class="table-style2">Ячейка 4</td>
+        </tr>
+      </table>
+
+   <script type="text/javascript">
+    const cells = document.querySelectorAll("td, th");
+    
+    cells.forEach((cell) => {
+      const originalClasses = cell.className;
+      
+      cell.addEventListener("mouseover", () => {
+        cell.className += "-alt";
+      });
+      
+      cell.addEventListener("mouseout", () => {
+        cell.className = originalClasses;
+      });
+    });
+  </script>
+
+    <img src="js.png" width="250" height="250" name="b1" style="position: absolute; bottom: 0; right: 10px; z-index: 0;">
+    <img src="js2.png" width="250" height="250" name="b2" style="position: absolute; bottom: 0; right: 100px; z-index: 1;">
+    <img src="js3.jpg" width="250" height="250" name="b3" style="position: absolute; bottom: 0; right: 200px; z-index: 2;">
+
+  <div class="LayerButtons">
+      <button onclick="document.getElementsByName('b2')[0].style.visibility = 'hidden'">Hide middle image</button>
+      <button onclick="document.getElementsByName('b2')[0].style.visibility = 'visible'">Show middle image</button>
+      <button onclick="swapLayers()"style="top: 900px">Swap layers</button>
+  </div>
+
+  <script>
+    function swapLayers() {
+      var image1 = document.getElementsByName('b1')[0];
+      var image3 = document.getElementsByName('b3')[0];
+      
+      var tempZIndex = image1.style.zIndex;
+      b1.style.zIndex = b3.style.zIndex;
+      b3.style.zIndex = tempZIndex;
+      }
+  </script>
+
+
+  </div> 
+</body>
+</html>
